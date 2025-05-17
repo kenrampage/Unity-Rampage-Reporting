@@ -54,7 +54,9 @@ namespace KenRampage.Reporting.Editor
                 // Then show scene selection window
                 MultiSelectionWindow window = ScriptableObject.CreateInstance<MultiSelectionWindow>();
                 window.Initialize("Select Scenes to Analyze", sceneNames.ToArray(), scenePaths.ToArray());
-                window.OnSelectionConfirmed += (selectedScenePaths) => ProcessMultipleScenes(selectedScenePaths, settings);
+                window.OnSelectionConfirmed += (selectedScenePaths) => {
+                    EditorApplication.delayCall += () => ProcessMultipleScenes(selectedScenePaths, settings);
+                };
                 window.ShowUtility();
             }
         }
@@ -82,11 +84,12 @@ namespace KenRampage.Reporting.Editor
         private static void SetAllSettings(PerformanceAnalyzerSettings settings, bool enabled)
         {
             // This would set all boolean properties to the specified value
-            foreach (var property in typeof(PerformanceAnalyzerSettings).GetProperties())
+            // Corrected to use GetFields for public fields
+            foreach (var field in typeof(PerformanceAnalyzerSettings).GetFields(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance))
             {
-                if (property.PropertyType == typeof(bool) && property.CanWrite)
+                if (field.FieldType == typeof(bool))
                 {
-                    property.SetValue(settings, enabled);
+                    field.SetValue(settings, enabled);
                 }
             }
         }
@@ -119,8 +122,9 @@ namespace KenRampage.Reporting.Editor
             // Show scene selection window
             MultiSelectionWindow window = ScriptableObject.CreateInstance<MultiSelectionWindow>();
             window.Initialize("Select Scenes to Analyze", sceneNames.ToArray(), scenePaths.ToArray());
-            window.OnSelectionConfirmed += (selectedScenePaths) => 
-                ProcessMultipleScenes(selectedScenePaths, settings, filePrefix);
+            window.OnSelectionConfirmed += (selectedScenePaths) => {
+                EditorApplication.delayCall += () => ProcessMultipleScenes(selectedScenePaths, settings, filePrefix);
+            };
             window.ShowUtility();
         }
 
