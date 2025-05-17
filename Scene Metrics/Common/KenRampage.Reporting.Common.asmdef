@@ -1,0 +1,14 @@
+{
+    "name": "KenRampage.Reporting.Common",
+    "rootNamespace": "KenRampage.Reporting",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
