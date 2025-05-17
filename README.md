@@ -1,2 +1,2 @@
 # Unity-Rampage-Reporting
-A collection of data collection and analysis tools for Unity
+A suite of project focused data collection and analysis tools for Unity
