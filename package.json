@@ -1,0 +1,11 @@
+{
+  "name": "com.kenrampage.reporting",
+  "version": "1.0.0",
+  "displayName": "Rampage Reporting",
+  "description": "A suite of date collection and analysis tools for Unity",
+  "unity": "6000.0.37",
+  "author": {
+    "name": "Ken Rampage",
+    "url": "https://github.com/kenrampage"
+  }
+}
