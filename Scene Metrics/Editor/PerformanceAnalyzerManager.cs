@@ -41,7 +41,7 @@ namespace KenRampage.Reporting.Editor
             {
                 string path = AssetDatabase.GUIDToAssetPath(guid);
                 scenePaths.Add(path);
-                sceneNames.Add(Path.GetFileNameWithoutExtension(path));
+                sceneNames.Add(SceneMetricsCollector.GetDescriptiveSceneNameFromPath(path));
             }
             
             // First show settings window
@@ -116,7 +116,7 @@ namespace KenRampage.Reporting.Editor
             {
                 string path = AssetDatabase.GUIDToAssetPath(guid);
                 scenePaths.Add(path);
-                sceneNames.Add(Path.GetFileNameWithoutExtension(path));
+                sceneNames.Add(SceneMetricsCollector.GetDescriptiveSceneNameFromPath(path));
             }
             
             // Show scene selection window
@@ -158,7 +158,7 @@ namespace KenRampage.Reporting.Editor
                 for (int i = 0; i < selectedScenePaths.Length; i++)
                 {
                     string scenePath = selectedScenePaths[i];
-                    string sceneName = Path.GetFileNameWithoutExtension(scenePath);
+                    string sceneName = SceneMetricsCollector.GetDescriptiveSceneNameFromPath(scenePath);
                     
                     EditorUtility.DisplayProgressBar("Processing Scenes", 
                         $"Analyzing scene {i+1}/{selectedScenePaths.Length}: {sceneName}", 

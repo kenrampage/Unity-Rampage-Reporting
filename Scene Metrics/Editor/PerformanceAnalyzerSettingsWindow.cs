@@ -66,9 +66,9 @@ namespace KenRampage.Reporting.Editor
             if (_showHierarchySettings)
             {
                 EditorGUI.indentLevel++;
-                _settings.AnalyzeGameObjectCounts = EditorGUILayout.Toggle("Count GameObjects", _settings.AnalyzeGameObjectCounts);
-                _settings.AnalyzeHierarchyDepth = EditorGUILayout.Toggle("Analyze Hierarchy Depth", _settings.AnalyzeHierarchyDepth);
-                _settings.AnalyzeEmptyGameObjects = EditorGUILayout.Toggle("Find Empty GameObjects", _settings.AnalyzeEmptyGameObjects);
+                _settings.AnalyzeGameObjectCounts = EditorGUILayout.ToggleLeft("Count GameObjects", _settings.AnalyzeGameObjectCounts);
+                _settings.AnalyzeHierarchyDepth = EditorGUILayout.ToggleLeft("Analyze Hierarchy Depth", _settings.AnalyzeHierarchyDepth);
+                _settings.AnalyzeEmptyGameObjects = EditorGUILayout.ToggleLeft("Find Empty GameObjects", _settings.AnalyzeEmptyGameObjects);
                 EditorGUI.indentLevel--;
             }
             
@@ -79,11 +79,11 @@ namespace KenRampage.Reporting.Editor
             if (_showRenderingSettings)
             {
                 EditorGUI.indentLevel++;
-                _settings.AnalyzeRenderers = EditorGUILayout.Toggle("Analyze Renderers", _settings.AnalyzeRenderers);
-                _settings.AnalyzeMaterials = EditorGUILayout.Toggle("Analyze Materials", _settings.AnalyzeMaterials);
-                _settings.AnalyzeShaders = EditorGUILayout.Toggle("Analyze Shaders", _settings.AnalyzeShaders);
-                _settings.AnalyzeTextures = EditorGUILayout.Toggle("Analyze Textures", _settings.AnalyzeTextures);
-                _settings.AnalyzeCameras = EditorGUILayout.Toggle("Analyze Cameras", _settings.AnalyzeCameras);
+                _settings.AnalyzeRenderers = EditorGUILayout.ToggleLeft("Analyze Renderers", _settings.AnalyzeRenderers);
+                _settings.AnalyzeMaterials = EditorGUILayout.ToggleLeft("Analyze Materials", _settings.AnalyzeMaterials);
+                _settings.AnalyzeShaders = EditorGUILayout.ToggleLeft("Analyze Shaders", _settings.AnalyzeShaders);
+                _settings.AnalyzeTextures = EditorGUILayout.ToggleLeft("Analyze Textures", _settings.AnalyzeTextures);
+                _settings.AnalyzeCameras = EditorGUILayout.ToggleLeft("Analyze Cameras", _settings.AnalyzeCameras);
                 EditorGUI.indentLevel--;
             }
             
@@ -94,8 +94,8 @@ namespace KenRampage.Reporting.Editor
             if (_showPhysicsSettings)
             {
                 EditorGUI.indentLevel++;
-                _settings.AnalyzeColliders = EditorGUILayout.Toggle("Analyze Colliders", _settings.AnalyzeColliders);
-                _settings.AnalyzeRigidbodies = EditorGUILayout.Toggle("Analyze Rigidbodies", _settings.AnalyzeRigidbodies);
+                _settings.AnalyzeColliders = EditorGUILayout.ToggleLeft("Analyze Colliders", _settings.AnalyzeColliders);
+                _settings.AnalyzeRigidbodies = EditorGUILayout.ToggleLeft("Analyze Rigidbodies", _settings.AnalyzeRigidbodies);
                 EditorGUI.indentLevel--;
             }
             
@@ -106,7 +106,7 @@ namespace KenRampage.Reporting.Editor
             if (_showAssetSettings)
             {
                 EditorGUI.indentLevel++;
-                _settings.AnalyzePrefabInstances = EditorGUILayout.Toggle("Analyze Prefab Instances", _settings.AnalyzePrefabInstances);
+                _settings.AnalyzePrefabInstances = EditorGUILayout.ToggleLeft("Analyze Prefab Instances", _settings.AnalyzePrefabInstances);
                 EditorGUI.indentLevel--;
             }
             
@@ -117,10 +117,10 @@ namespace KenRampage.Reporting.Editor
             if (_showComponentSettings)
             {
                 EditorGUI.indentLevel++;
-                _settings.AnalyzeParticleSystems = EditorGUILayout.Toggle("Analyze Particle Systems", _settings.AnalyzeParticleSystems);
-                _settings.AnalyzeLights = EditorGUILayout.Toggle("Analyze Lights", _settings.AnalyzeLights);
-                _settings.AnalyzeReflectionProbes = EditorGUILayout.Toggle("Analyze Reflection Probes", _settings.AnalyzeReflectionProbes);
-                _settings.AnalyzeAudioSources = EditorGUILayout.Toggle("Analyze Audio Sources", _settings.AnalyzeAudioSources);
+                _settings.AnalyzeParticleSystems = EditorGUILayout.ToggleLeft("Analyze Particle Systems", _settings.AnalyzeParticleSystems);
+                _settings.AnalyzeLights = EditorGUILayout.ToggleLeft("Analyze Lights", _settings.AnalyzeLights);
+                _settings.AnalyzeReflectionProbes = EditorGUILayout.ToggleLeft("Analyze Reflection Probes", _settings.AnalyzeReflectionProbes);
+                _settings.AnalyzeAudioSources = EditorGUILayout.ToggleLeft("Analyze Audio Sources", _settings.AnalyzeAudioSources);
                 EditorGUI.indentLevel--;
             }
             
@@ -288,7 +288,7 @@ namespace KenRampage.Reporting.Editor
                     continue;
                 }
                 
-                _selections[i] = EditorGUILayout.Toggle(_displayNames[i], _selections[i]);
+                _selections[i] = EditorGUILayout.ToggleLeft(_displayNames[i], _selections[i]);
             }
             EditorGUILayout.EndScrollView();
             
