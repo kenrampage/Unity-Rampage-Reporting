@@ -206,17 +206,24 @@ namespace KenRampage.Reporting.Editor
                 return;
             }
 
-            // Ask user where to save the CSV file
-            string defaultFileName = $"{fileNamePrefix}.csv";
-            string directory = EditorUtility.SaveFolderPanel("Select Folder to Save CSV", "", "");
+            // Generate a suggested filename with date
+            string dateSuffix = System.DateTime.Now.ToString("yyyyMMdd");
+            string suggestedFileName = $"{fileNamePrefix}_{dateSuffix}.csv";
 
-            if (string.IsNullOrEmpty(directory))
+            // Show "Save As" dialog
+            string filePath = EditorUtility.SaveFilePanel(
+                "Save Performance Metrics CSV", // Dialog title
+                "",                             // Default directory (user will choose)
+                suggestedFileName,              // Suggested filename
+                "csv"                           // File extension
+            );
+
+            // Check if the user cancelled the dialog
+            if (string.IsNullOrEmpty(filePath))
             {
                 Debug.Log("CSV export cancelled by user.");
                 return;
             }
-
-            string filePath = Path.Combine(directory, defaultFileName);
 
             // Create CSV Content
             StringBuilder sb = new StringBuilder();
